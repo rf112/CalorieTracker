@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Calorie Tracker
 //
-//  Created by CISstudent on 11/18/16.
+//  Created by Adam on 11/18/16.
 //  Copyright (c) 2016 rase. All rights reserved.
 //
 
@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // Connections to the items in the storyboard - Adam
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var genderSegmentControl: UISegmentedControl!
     @IBOutlet weak var heightTextField: UITextField!
@@ -17,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var bmrLabel: UILabel!
     
+    // Values to be stored in User Defaults - Adam
     let userPreferences = NSUserDefaults.standardUserDefaults()
     var genderValue: Int = 0
     var heightValue: Double = 0
@@ -31,6 +33,7 @@ class ViewController: UIViewController {
         loadUserSettings()
     }
     
+    // Loads the textfields with date from user defaults - Adam
     func loadUserSettings() {
         
         if let name = userPreferences.stringForKey("userName") {
@@ -76,6 +79,7 @@ class ViewController: UIViewController {
         calculateBMR()
     }
     
+    // Calculates BMR based on gender - Adam
     func calculateBMR() {
         if heightValue == 0.0 && weightValue == 0.0 && ageValue == 0 {
             userPreferences.setInteger(2000, forKey: "userBMR")
@@ -91,6 +95,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // Updates user defaults and reloads the calculations and updates the textfields - Adam
     @IBAction func updateUserSettings(sender: AnyObject) {
         //update user settings
         if nameTextField.text != "" {
