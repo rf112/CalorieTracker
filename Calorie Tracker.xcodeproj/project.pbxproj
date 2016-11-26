@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D44D742F1DEA4243003A6271 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44D742D1DEA4243003A6271 /* Main.storyboard */; };
 		D4E4F5BA1DEA11C3002BC136 /* AddEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E4F5B91DEA11C3002BC136 /* AddEntryViewController.swift */; };
 		D4E4F5BC1DEA17D3002BC136 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E4F5BB1DEA17D3002BC136 /* Keys.swift */; };
 		D4E999B61DDF8C9200F8C6ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E999B51DDF8C9200F8C6ED /* AppDelegate.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D44D742E1DEA4243003A6271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D4E4F5B91DEA11C3002BC136 /* AddEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEntryViewController.swift; sourceTree = "<group>"; };
 		D4E4F5BB1DEA17D3002BC136 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		D4E999B01DDF8C9200F8C6ED /* Calorie Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calorie Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 		D4E999B21DDF8C9200F8C6ED /* Calorie Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				D44D742D1DEA4243003A6271 /* Main.storyboard */,
 				D4E4F5B91DEA11C3002BC136 /* AddEntryViewController.swift */,
 				D4E999B51DDF8C9200F8C6ED /* AppDelegate.swift */,
 				D4F481931DE77753001539A8 /* EntryCell.swift */,
@@ -204,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D44D742F1DEA4243003A6271 /* Main.storyboard in Resources */,
 				D4E999C31DDF8C9200F8C6ED /* LaunchScreen.xib in Resources */,
 				D4E999C01DDF8C9200F8C6ED /* Images.xcassets in Resources */,
 			);
@@ -252,6 +256,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D44D742D1DEA4243003A6271 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D44D742E1DEA4243003A6271 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		D4E999C11DDF8C9200F8C6ED /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
