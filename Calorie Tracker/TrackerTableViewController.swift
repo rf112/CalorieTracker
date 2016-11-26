@@ -21,7 +21,7 @@ class TrackerTableViewController: UITableViewController {
     
     // Gets today's date (I think) - Adam
     var todayDate = NSDate()
-    
+
     var error: NSError?
     
     override func viewDidLoad() {
@@ -56,7 +56,6 @@ class TrackerTableViewController: UITableViewController {
         
         let entry = entries[indexPath.row]
         
-        
         // Gets the date from inside core data - Adam
         var entryDate = entry.valueForKey(Keys.dateKey) as? NSDate
         
@@ -74,16 +73,19 @@ class TrackerTableViewController: UITableViewController {
         return cell
     }
     
-    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            managedContext?.deleteObject(entries[indexPath.row] as NSManagedObject)
+            entries.removeAtIndex(indexPath.row)
+            managedContext?.save(&error)
+            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
-    */
-
 
     /*
     // Override to support conditional editing of the table view.

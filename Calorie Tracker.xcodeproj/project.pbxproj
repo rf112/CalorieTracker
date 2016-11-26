@@ -87,7 +87,6 @@
 		D4E999B21DDF8C9200F8C6ED /* Calorie Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				D44D742D1DEA4243003A6271 /* Main.storyboard */,
 				D4E4F5B91DEA11C3002BC136 /* AddEntryViewController.swift */,
 				D4E999B51DDF8C9200F8C6ED /* AppDelegate.swift */,
 				D4F481931DE77753001539A8 /* EntryCell.swift */,
@@ -97,6 +96,7 @@
 				D4E999BF1DDF8C9200F8C6ED /* Images.xcassets */,
 				D4E999B71DDF8C9200F8C6ED /* Calorie_Tracker.xcdatamodeld */,
 				D4E999C11DDF8C9200F8C6ED /* LaunchScreen.xib */,
+				D44D742D1DEA4243003A6271 /* Main.storyboard */,
 				D4E999B31DDF8C9200F8C6ED /* Supporting Files */,
 			);
 			path = "Calorie Tracker";

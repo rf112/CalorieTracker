@@ -57,15 +57,29 @@ class AddEntryViewController: UIViewController {
             alertController.addAction(OKAction)
             self.presentViewController(alertController, animated: true, completion: nil)
         } else {
-        
+            
             var netCalories = (entryCaloriesTextField.text as NSString).doubleValue
-        
-            entry.setValue(selectedDate, forKey: Keys.dateKey)
-            entry.setValue(entryNameTextField.text, forKey: Keys.nameKey)
-            entry.setValue(entryDescriptionTextField.text, forKey: Keys.descKey)
-            entry.setValue(netCalories, forKey: Keys.calKey)
-        
-            managedContext.save(&error)
+            
+            if netCalories == 0.0 {
+                let alertController = UIAlertController(title: "Calorie Error", message: "Please enter a numeric value", preferredStyle: .Alert)
+                let OKAction = UIAlertAction (
+                    title: "Ok",
+                    style: UIAlertActionStyle.Cancel,
+                    handler: nil
+                )
+                alertController.addAction(OKAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+                entryCaloriesTextField.text = ""
+            } else {
+                
+                entry.setValue(selectedDate, forKey: Keys.dateKey)
+                entry.setValue(entryNameTextField.text, forKey: Keys.nameKey)
+                entry.setValue(entryDescriptionTextField.text, forKey: Keys.descKey)
+                entry.setValue(netCalories, forKey: Keys.calKey)
+                
+                managedContext.save(&error)
+            }
         }
     }
     
