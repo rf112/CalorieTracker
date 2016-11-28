@@ -15,13 +15,13 @@ class TrackerTableViewController: UITableViewController {
     
     // Core data entries stored in an array - Adam
     var entries = [NSManagedObject]()
+    var entriesByDate = [NSManagedObject]()
     
     // For formatting dates into strins - Adam
     let dateFormatter = NSDateFormatter()
     
-    // Gets today's date (I think) - Adam
-    var todayDate = NSDate()
-
+    var filterDate: NSDate?
+    
     var error: NSError?
     
     override func viewDidLoad() {
@@ -29,15 +29,46 @@ class TrackerTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
         fetchEntries()
+        filterEntriesByDate()
     }
     
     func fetchEntries() {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Entry")
-    
+        let sortDescriptor = NSSortDescriptor(key: Keys.dateKey, ascending: false, selector: "localizedCaseInsensitiveCompare:")
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
         let results = managedContext?.executeFetchRequest(fetchRequest, error: &error)
+
         entries = results as [NSManagedObject]
+    }
+    
+    func filterEntriesByDate(selectedDate: NSDate = NSDate()) {
+        
+        entriesByDate = entries.filter() {
+            var entryNumbers = self.getDateComponentsFromDate($0.valueForKey(Keys.dateKey) as NSDate)
+            var selectedDateNumbers = self.getDateComponentsFromDate(selectedDate)
+            
+            return (
+                entryNumbers["day"] == selectedDateNumbers["day"] &&
+                entryNumbers["month"] == selectedDateNumbers["month"] &&
+                entryNumbers["year"] == selectedDateNumbers["year"]
+            )
+        }
+        
+        entriesByDate = entries
+    }
+    
+    func getDateComponentsFromDate(date: NSDate) -> [String : NSNumber] {
+        let calendar = NSCalendar.currentCalendar()
+        
+        var dateNumbers: [String : NSNumber] = [
+            "month" : calendar.component(.CalendarUnitMonth, fromDate: date),
+            "day"   : calendar.component(.CalendarUnitDay, fromDate: date),
+            "year"  : calendar.component(.CalendarUnitYear, fromDate: date)
+        ]
+        return dateNumbers
     }
     
     // MARK: - Table view data source
@@ -47,14 +78,14 @@ class TrackerTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return entries.count
+        return entriesByDate.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "EntryCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as EntryCell
         
-        let entry = entries[indexPath.row]
+        let entry = entriesByDate[indexPath.row]
         
         // Gets the date from inside core data - Adam
         var entryDate = entry.valueForKey(Keys.dateKey) as? NSDate
@@ -79,46 +110,11 @@ class TrackerTableViewController: UITableViewController {
             // Delete the row from the data source
             let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             let managedContext = appDelegate.managedObjectContext
-            managedContext?.deleteObject(entries[indexPath.row] as NSManagedObject)
-            entries.removeAtIndex(indexPath.row)
+            managedContext?.deleteObject(entriesByDate[indexPath.row] as NSManagedObject)
+            entriesByDate.removeAtIndex(indexPath.row)
             managedContext?.save(&error)
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

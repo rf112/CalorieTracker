@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4498AFC1DEC9C98006FD761 /* DateFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4498AFB1DEC9C98006FD761 /* DateFilterViewController.swift */; };
 		D44D742F1DEA4243003A6271 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44D742D1DEA4243003A6271 /* Main.storyboard */; };
 		D4E4F5BA1DEA11C3002BC136 /* AddEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E4F5B91DEA11C3002BC136 /* AddEntryViewController.swift */; };
 		D4E4F5BC1DEA17D3002BC136 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E4F5BB1DEA17D3002BC136 /* Keys.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D4498AFB1DEC9C98006FD761 /* DateFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFilterViewController.swift; sourceTree = "<group>"; };
 		D44D742E1DEA4243003A6271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D4E4F5B91DEA11C3002BC136 /* AddEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEntryViewController.swift; sourceTree = "<group>"; };
 		D4E4F5BB1DEA17D3002BC136 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				D4F481931DE77753001539A8 /* EntryCell.swift */,
 				D4E4F5BB1DEA17D3002BC136 /* Keys.swift */,
 				D4F481951DE77A72001539A8 /* TrackerTableViewController.swift */,
+				D4498AFB1DEC9C98006FD761 /* DateFilterViewController.swift */,
 				D4E999BA1DDF8C9200F8C6ED /* ViewController.swift */,
 				D4E999BF1DDF8C9200F8C6ED /* Images.xcassets */,
 				D4E999B71DDF8C9200F8C6ED /* Calorie_Tracker.xcdatamodeld */,
@@ -231,6 +234,7 @@
 				D4E999BB1DDF8C9200F8C6ED /* ViewController.swift in Sources */,
 				D4E999B91DDF8C9200F8C6ED /* Calorie_Tracker.xcdatamodeld in Sources */,
 				D4E4F5BA1DEA11C3002BC136 /* AddEntryViewController.swift in Sources */,
+				D4498AFC1DEC9C98006FD761 /* DateFilterViewController.swift in Sources */,
 				D4E4F5BC1DEA17D3002BC136 /* Keys.swift in Sources */,
 				D4E999B61DDF8C9200F8C6ED /* AppDelegate.swift in Sources */,
 				D4F481941DE77753001539A8 /* EntryCell.swift in Sources */,
