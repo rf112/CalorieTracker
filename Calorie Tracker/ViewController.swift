@@ -81,7 +81,9 @@ class ViewController: UIViewController {
     
     // Calculates BMR based on gender - Adam
     func calculateBMR() {
-        if heightValue == 0.0 && weightValue == 0.0 && ageValue == 0 {
+        if heightValue == 0.0 || weightValue == 0.0 || ageValue == 0 {
+            //Changed the if statement above to include OR operands instead of AND.
+            //We should be defaulting the BMR if any of those values are zero - Ryan
             userPreferences.setInteger(2000, forKey: "userBMR")
             bmrLabel.text = "Basal Metabolic Rate is 2000 Calories/day"
         } else {
